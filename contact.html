@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Call — Beyond The Desk</title>
+  <meta name="description" content="Book a free discovery call with Beyond The Desk." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="business.html">Launch Your Business</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="contact.html" class="nav__cta">Book a Call</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero hero--sub">
+    <div class="container hero__inner">
+      <span class="eyebrow">Get in Touch</span>
+      <h1>Let's chat — no strings attached.</h1>
+      <p class="lead">
+        Drop me a message via email or WhatsApp and we'll figure out whether you're here to plan a trip,
+        start a business, or a little of both — and what the best next step is for you.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="max-width:720px;margin:0 auto 0.5rem;">
+        <span class="eyebrow">Contact Details</span>
+        <h2>I'd love to hear from you.</h2>
+        <p style="color:var(--color-muted);">
+          Pick whichever option suits you best &mdash; I aim to reply within one business day.
+        </p>
+      </div>
+
+      <div class="contact-methods">
+        <a href="mailto:sophieroseconway@gmail.com" class="contact-method">
+          <span class="contact-method__icon" aria-hidden="true">&#9993;&#65039;</span>
+          <span class="contact-method__text">
+            <span class="contact-method__label">Email</span>
+            <span class="contact-method__value">sophieroseconway@gmail.com</span>
+          </span>
+        </a>
+
+        <a href="https://wa.me/447391473168" target="_blank" rel="noopener" class="contact-method">
+          <span class="contact-method__icon" aria-hidden="true">&#128172;</span>
+          <span class="contact-method__text">
+            <span class="contact-method__label">WhatsApp</span>
+            <span class="contact-method__value">07391 473168</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="info-grid">
+        <div class="card">
+          <h3>What to expect</h3>
+          <p>A relaxed, no-pressure chat. No pitches, no obligation, just a chance to see if we're a fit!</p>
+          <ul style="margin:1rem 0 0; padding-left:1.1rem;">
+            <li>Trip ideas? Bring them.</li>
+            <li>Business questions? Ask away.</li>
+            <li>Just curious? Also totally fine.</li>
+          </ul>
+        </div>
+
+        <div class="card faq-carousel" id="faq-carousel">
+          <div class="faq-carousel__top">
+            <h3>FAQs</h3>
+          </div>
+          <div class="faq-carousel__viewport">
+            <div class="faq-carousel__track"></div>
+          </div>
+          <div class="faq-carousel__controls">
+            <button class="faq-carousel__btn" data-dir="-1" aria-label="Previous question">&lsaquo;</button>
+            <div class="faq-carousel__dots" aria-hidden="true"></div>
+            <button class="faq-carousel__btn" data-dir="1" aria-label="Next question">&rsaquo;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container" style="grid-template-columns: 1fr 1fr;">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="services.html">Travel Services</a></li>
+          <li><a href="business.html">Launch Your Business</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="contact.html">Book a Call</a></li>
+          <li><a href="mailto:sophieroseconway@gmail.com">sophieroseconway@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2023&ndash;<span id="year"></span> Beyond The Desk. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+  <!-- ============ FAQ CAROUSEL ============ -->
+  <script>
+    (function () {
+      const FAQS = [
+        {
+          q: "Are you restricted to the types of things you can book?",
+          a: "Not at all! All of our host agency's suppliers are ABTA &amp; ATOL protected and can be used to make bookings worldwide!"
+        },
+        {
+          q: "Is it cheaper to use an independent travel agent for my bookings?",
+          a: "The short answer — yes! Travel is a competitive industry with rates constantly changing. I'll aim to achieve the most reasonable deal within your budget, and even throw in some extras where possible to give it that special touch!"
+        },
+        {
+          q: "If I launch my business, do I need a big social media following to be successful?",
+          a: "Nope! I started with ZERO followers. Travel is one of the most sought-after products, and personal referrals and recommendations are a valuable and reliable avenue to expand your business!"
+        },
+        {
+          q: "Where can I find clients?",
+          a: "Look around you — EVERYONE is booking travel in some form! Plus, you're already booking trips and activities that you can earn back from too!"
+        },
+        {
+          q: "How do I get started?",
+          a: "Sign up takes less than 5 minutes! You register and then your training is all online and takes around 2 hours. You can split it up — it doesn't have to be done all at once!"
+        }
+      ];
+
+      const root = document.getElementById("faq-carousel");
+      if (!root) return;
+
+      const track = root.querySelector(".faq-carousel__track");
+      const dotsWrap = root.querySelector(".faq-carousel__dots");
+      const btns = root.querySelectorAll(".faq-carousel__btn");
+
+      // Build slides
+      track.innerHTML = FAQS.map(function (item) {
+        return (
+          '<div class="faq-slide">' +
+            '<p class="faq-q">' + item.q + '</p>' +
+            '<p class="faq-a">' + item.a + '</p>' +
+          '</div>'
+        );
+      }).join("");
+
+      // Build dots
+      dotsWrap.innerHTML = FAQS.map(function (_, i) {
+        return '<button type="button" class="faq-dot" data-index="' + i + '" aria-label="Go to question ' + (i + 1) + '"></button>';
+      }).join("");
+
+      const dots = dotsWrap.querySelectorAll(".faq-dot");
+      const slides = track.querySelectorAll(".faq-slide");
+      let index = 0;
+
+      // Auto-advance settings
+      const INTERVAL_MS = 5000;   // 5s between transitions
+      const HOVER_MS    = 12000;  // longer pause when hovering
+      let timer = null;
+      let isHovering = false;
+
+      function update() {
+        slides.forEach(function (s, i) {
+          s.classList.toggle("is-active", i === index);
+        });
+        dots.forEach(function (d, i) {
+          d.classList.toggle("is-active", i === index);
+        });
+      }
+
+      function go(dir) {
+        index = (index + dir + FAQS.length) % FAQS.length;
+        update();
+      }
+
+      function schedule() {
+        clearTimeout(timer);
+        const delay = isHovering ? HOVER_MS : INTERVAL_MS;
+        timer = setTimeout(function () {
+          go(1);
+          schedule();
+        }, delay);
+      }
+
+      function resetTimer() {
+        schedule();
+      }
+
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          go(parseInt(b.getAttribute("data-dir"), 10));
+          resetTimer();
+        });
+      });
+
+      dots.forEach(function (d) {
+        d.addEventListener("click", function () {
+          index = parseInt(d.getAttribute("data-index"), 10);
+          update();
+          resetTimer();
+        });
+      });
+
+      // Longer pause on hover / focus
+      root.addEventListener("mouseenter", function () {
+        isHovering = true;
+        schedule();
+      });
+      root.addEventListener("mouseleave", function () {
+        isHovering = false;
+        schedule();
+      });
+      root.addEventListener("focusin", function () {
+        isHovering = true;
+        schedule();
+      });
+      root.addEventListener("focusout", function () {
+        isHovering = false;
+        schedule();
+      });
+
+      // Pause completely when the tab isn't visible
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          clearTimeout(timer);
+        } else {
+          schedule();
+        }
+      });
+
+      update();
+      schedule();
+    })();
+  </script>
+
+  <!-- CALENDLY BOOKING WIDGET DISABLED. Calendly URL on file: https://calendly.com/itssophieconway/discovery-call — to re-enable, ask Claude to put the Calendly block back in. -->
+
+
+
+</body>
+</html>

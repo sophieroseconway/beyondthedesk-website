@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar — Beyond The Desk</title>
+  <meta name="description" content="Upcoming CTA business calls, community events, and live trainings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="business.html">Launch Your Business</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="contact.html" class="nav__cta">Book a Call</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero hero--sub">
+    <div class="container hero__inner">
+      <span class="eyebrow">Calendar</span>
+      <h1>Live calls, trainings &amp; community events.</h1>
+      <p class="lead">
+        Here's where everything lands: information calls, community hangout spaces, trainings and much more!
+        Click a highlighted date to find out what's happening in the community space...
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CALENDAR SECTION ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="grid" style="grid-template-columns: 1.4fr 1fr; gap:2rem;">
+        <div>
+          <div id="calendar" class="calendar-wrap"></div>
+        </div>
+
+        <aside>
+          <h3 style="font-size:1.75rem;margin-bottom:1rem;">What's on the calendar?</h3>
+          <p><strong>Opportunity Calls</strong> — weekly live calls (every Wednesday at 20:30 GMT) where we walk through the business opportunity, answer questions, and introduce guests who've built their own.</p>
+          <p><strong>Community Calls</strong> — open hangouts for anyone in our community to drop in, share wins, and ask questions.</p>
+          <p><strong>Trainings</strong> — topic-specific sessions (travel trends, social media, mindset, etc.) run by me and guest trainers.</p>
+          <p><strong>Co-working Sessions</strong> — casual focused-work hangouts where we show up together, crack on with our to-do lists, and keep each other accountable.</p>
+          <p style="margin-top:1.5rem;"><a href="contact.html" class="btn btn--primary">Book a 1:1 Call</a></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container" style="grid-template-columns: 1fr 1fr;">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="services.html">Travel Services</a></li>
+          <li><a href="business.html">Launch Your Business</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="contact.html">Book a Call</a></li>
+          <li><a href="mailto:sophieroseconway@gmail.com">sophieroseconway@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2023&ndash;<span id="year"></span> Beyond The Desk. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Define one-off events here. Dates are YYYY-MM-DD in local time.
+       Weekly Wednesday Opportunity Calls are auto-generated below — no need
+       to add them manually. -->
+  <script>
+    window.BTD_EVENTS = [
+      { date: "2026-04-21", time: "7:30 PM", title: "PlanNet Marketing — Brentwood", location: "Brentwood", description: "19:30 registration · 19:45 presentation · 20:30 training" },
+      { date: "2026-05-05", time: "8:30 PM GMT", title: "Opportunity Call", description: "Weekly opportunity overview + Q&A." },
+      { date: "2026-05-06", time: "7:30 PM", title: "PlanNet Marketing — Leeds", location: "Leeds", description: "19:30 registration · 19:45 presentation · 20:30 training" }
+    ];
+
+    // Auto-generate weekly Wednesday Opportunity Calls so the calendar always
+    // shows at least the next 6 weeks of upcoming calls without manual upkeep.
+    (function () {
+      const WEEKS_AHEAD = 8; // generate a touch more than 6 weeks for safety
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      // Walk back to the most recent Wednesday on/before today, so this
+      // week's call still appears even after it has happened earlier in the day.
+      const startWed = new Date(today);
+      const offset = (startWed.getDay() - 3 + 7) % 7; // 3 = Wednesday
+      startWed.setDate(startWed.getDate() - offset);
+
+      const existing = new Set(
+        (window.BTD_EVENTS || []).map(function (e) { return e.date + "|" + e.title; })
+      );
+
+      for (let i = 0; i < WEEKS_AHEAD; i++) {
+        const d = new Date(startWed);
+        d.setDate(startWed.getDate() + i * 7);
+        const dateStr = d.getFullYear() + "-" +
+          String(d.getMonth() + 1).padStart(2, "0") + "-" +
+          String(d.getDate()).padStart(2, "0");
+        const key = dateStr + "|Opportunity Call";
+        if (existing.has(key)) continue;
+        window.BTD_EVENTS.push({
+          date: dateStr,
+          time: "8:30 PM GMT",
+          title: "Opportunity Call",
+          description: "Weekly opportunity overview + Q&A."
+        });
+      }
+    })();
+  </script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderCalendar("#calendar");
+  </script>
+
+  <style>
+    /* Calendar page responsive tweak */
+    @media (max-width: 900px) {
+      .container > .grid[style*="1.4fr"] { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</body>
+</html>
