@@ -98,10 +98,40 @@ p { margin: 0 0 1em; }
 .nav {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
   padding: 1rem 1.5rem;
   max-width: var(--max-width);
   margin: 0 auto;
+}
+
+/* Social handles on the left side of the header */
+.nav__socials {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.nav__social {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--color-primary);
+  font-size: .85rem;
+  font-weight: 500;
+  transition: color .2s ease;
+  white-space: nowrap;
+}
+.nav__social:hover {
+  color: var(--color-accent-dark);
+}
+.nav__social svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .nav__social span { display: none; }
+  .nav__socials { gap: .9rem; }
 }
 .nav__brand {
   font-family: var(--font-heading);
