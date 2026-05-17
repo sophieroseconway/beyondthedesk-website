@@ -89,8 +89,8 @@
         <span class="eyebrow">What You Get</span>
         <h2>A full support system, not just a "kit".</h2>
       </div>
-      <div class="grid grid--3">
-        <div class="card">
+      <div class="grid grid--3 what-you-get__grid" id="what-you-get-grid">
+        <div class="card is-active">
           <div class="card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 7v14"/>
@@ -175,6 +175,13 @@
           <h3>Up to 10 paydays a month</h3>
           <p>Multiple income streams means you get paid up to ten times a month — not just the usual once.</p>
         </div>
+      </div>
+
+      <!-- Mobile-only carousel controls (hidden via CSS on larger screens) -->
+      <div class="what-you-get__controls" id="what-you-get-controls" aria-hidden="true">
+        <button class="what-you-get__btn" data-dir="-1" aria-label="Previous">&lsaquo;</button>
+        <div class="what-you-get__dots"></div>
+        <button class="what-you-get__btn" data-dir="1" aria-label="Next">&rsaquo;</button>
       </div>
     </div>
   </section>
@@ -277,5 +284,95 @@
 
   <script src="js/main.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+  <!-- ============ WHAT YOU GET — MOBILE CAROUSEL ============ -->
+  <script>
+    (function () {
+      const grid = document.getElementById('what-you-get-grid');
+      const controls = document.getElementById('what-you-get-controls');
+      if (!grid || !controls) return;
+
+      const cards = grid.querySelectorAll('.card');
+      const dotsWrap = controls.querySelector('.what-you-get__dots');
+      const btns = controls.querySelectorAll('.what-you-get__btn');
+
+      // Build dots
+      dotsWrap.innerHTML = Array.from(cards).map(function (_, i) {
+        return '<button type="button" class="what-you-get__dot" data-index="' + i + '" aria-label="Go to slide ' + (i + 1) + '"></button>';
+      }).join('');
+      const dots = dotsWrap.querySelectorAll('.what-you-get__dot');
+
+      let index = 0;
+      let timer = null;
+      const INTERVAL_MS = 5000;
+
+      function update() {
+        cards.forEach(function (c, i) { c.classList.toggle('is-active', i === index); });
+        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === index); });
+      }
+
+      function go(dir) {
+        index = (index + dir + cards.length) % cards.length;
+        update();
+      }
+
+      function start() {
+        clearTimeout(timer);
+        timer = setTimeout(function tick() {
+          go(1);
+          timer = setTimeout(tick, INTERVAL_MS);
+        }, INTERVAL_MS);
+      }
+
+      function stop() {
+        clearTimeout(timer);
+        timer = null;
+      }
+
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          go(parseInt(b.getAttribute('data-dir'), 10));
+          start(); // reset auto-advance timer on user click
+        });
+      });
+
+      dotsWrap.addEventListener('click', function (e) {
+        const dot = e.target.closest('.what-you-get__dot');
+        if (!dot) return;
+        index = parseInt(dot.getAttribute('data-index'), 10);
+        update();
+        start();
+      });
+
+      // Only activate the carousel on mobile (<= 720px). On larger screens the
+      // section reverts to its normal grid layout via CSS, and the JS sits idle.
+      const mq = window.matchMedia('(max-width: 720px)');
+
+      function handleViewport() {
+        if (mq.matches) {
+          // Mobile: enable carousel
+          controls.setAttribute('aria-hidden', 'false');
+          index = 0;
+          update();
+          start();
+        } else {
+          // Desktop: deactivate, remove active-only state so all cards show
+          stop();
+          controls.setAttribute('aria-hidden', 'true');
+          cards.forEach(function (c) { c.classList.remove('is-active'); });
+          dots.forEach(function (d) { d.classList.remove('is-active'); });
+        }
+      }
+
+      handleViewport();
+      mq.addEventListener('change', handleViewport);
+
+      // Pause when the tab isn't visible (saves battery on phones)
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stop();
+        else if (mq.matches) start();
+      });
+    })();
+  </script>
 </body>
 </html>
