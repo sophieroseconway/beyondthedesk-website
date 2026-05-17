@@ -412,13 +412,18 @@ p { margin: 0 0 1em; }
 }
 @media (max-width: 560px) {
   .hero__photo-wall {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 180px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
     padding: 4px;
     gap: 3px;
   }
-  .hero__photo-wall .ph--wide { grid-column: span 3; }
-  .hero__photo-wall .ph--ls   { grid-column: span 2; }
+  /* Reset any orientation spans on mobile so all 8 photos sit in a clean 2x4 grid */
+  .hero__photo-wall .ph--wide,
+  .hero__photo-wall .ph--ls,
+  .hero__photo-wall .ph--p {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
 .hero-logo {
   margin: 0 0 1.5rem;
