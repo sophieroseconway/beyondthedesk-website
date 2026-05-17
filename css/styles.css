@@ -435,20 +435,21 @@ p { margin: 0 0 1em; }
 .card h3 { margin-top: 0; }
 
 /* Shared icon sizing — keeps SVGs visually consistent inside circular containers */
-.card__icon svg { width: 22px; height: 22px; }
+.card__icon svg { width: 30px; height: 30px; }
 .feature-box .icon-box svg { width: 32px; height: 32px; }
 .stat-tile .icon-box svg { width: 36px; height: 36px; }
 .contact-method__icon svg { width: 26px; height: 26px; }
 
 .card__icon {
-  width: 42px;
-  height: 42px;
+  width: 64px;
+  height: 64px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--color-accent);
-  color: var(--color-primary-dark);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  color: var(--color-accent-dark);
   font-weight: 700;
   margin-bottom: 1rem;
 }
