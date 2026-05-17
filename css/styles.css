@@ -105,25 +105,39 @@ p { margin: 0 0 1em; }
   margin: 0 auto;
 }
 
-/* Social icons on the left side of the header */
+/* Social handles on the left side of the header */
 .nav__socials {
   display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: .6rem;
+  font-size: .95rem;
+  font-weight: 500;
 }
 .nav__social {
   display: inline-flex;
   align-items: center;
-  color: var(--color-primary);
+  gap: .4rem;
+  color: var(--color-text);
   transition: color .2s ease;
-  line-height: 0;
+  white-space: nowrap;
 }
 .nav__social:hover {
-  color: var(--color-accent-dark);
+  color: var(--color-primary);
 }
 .nav__social svg {
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
+}
+.nav__sep {
+  color: var(--color-border);
+  font-weight: 300;
+  user-select: none;
+}
+@media (max-width: 720px) {
+  .nav__social span,
+  .nav__sep { display: none; }
+  .nav__socials { gap: .75rem; }
 }
 .nav__brand {
   font-family: var(--font-heading);
