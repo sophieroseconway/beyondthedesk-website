@@ -102,23 +102,23 @@
   </footer>
 
   <!-- Define one-off events here. Dates are YYYY-MM-DD in local time.
-       Weekly Wednesday Opportunity Calls are auto-generated below — no need
-       to add them manually. -->
+       Weekly Wednesday Opportunity Calls (20:00 GMT) and New Starter Welcome
+       Calls (20:30 GMT) are auto-generated below — no need to add them manually. -->
   <script>
     window.BTD_EVENTS = [
       { date: "2026-04-21", time: "7:30 PM", title: "PlanNet Marketing — Brentwood", location: "Brentwood", description: "19:30 registration · 19:45 presentation · 20:30 training" },
-      { date: "2026-05-05", time: "8:30 PM GMT", title: "Opportunity Call", description: "Weekly opportunity overview + Q&A." },
+      { date: "2026-05-05", time: "8:00 PM GMT", title: "Opportunity Call", description: "Weekly opportunity overview + Q&A." },
       { date: "2026-05-06", time: "7:30 PM", title: "PlanNet Marketing — Leeds", location: "Leeds", description: "19:30 registration · 19:45 presentation · 20:30 training" }
     ];
 
-    // Auto-generate weekly Wednesday Opportunity Calls so the calendar always
+    // Auto-generate the two weekly Wednesday calls so the calendar always
     // shows at least the next 6 weeks of upcoming calls without manual upkeep.
     (function () {
       const WEEKS_AHEAD = 8; // generate a touch more than 6 weeks for safety
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       // Walk back to the most recent Wednesday on/before today, so this
-      // week's call still appears even after it has happened earlier in the day.
+      // week's calls still appear even after they have happened earlier in the day.
       const startWed = new Date(today);
       const offset = (startWed.getDay() - 3 + 7) % 7; // 3 = Wednesday
       startWed.setDate(startWed.getDate() - offset);
@@ -127,19 +127,36 @@
         (window.BTD_EVENTS || []).map(function (e) { return e.date + "|" + e.title; })
       );
 
+      // Each entry below is a weekly Wednesday call. Add more here if needed.
+      const WEEKLY_CALLS = [
+        {
+          title: "Opportunity Call",
+          time: "8:00 PM GMT",
+          description: "Weekly opportunity overview + Q&A."
+        },
+        {
+          title: "New Starter Welcome Call",
+          time: "8:30 PM GMT",
+          description: "Welcome and onboarding session for new starters."
+        }
+      ];
+
       for (let i = 0; i < WEEKS_AHEAD; i++) {
         const d = new Date(startWed);
         d.setDate(startWed.getDate() + i * 7);
         const dateStr = d.getFullYear() + "-" +
           String(d.getMonth() + 1).padStart(2, "0") + "-" +
           String(d.getDate()).padStart(2, "0");
-        const key = dateStr + "|Opportunity Call";
-        if (existing.has(key)) continue;
-        window.BTD_EVENTS.push({
-          date: dateStr,
-          time: "8:30 PM GMT",
-          title: "Opportunity Call",
-          description: "Weekly opportunity overview + Q&A."
+
+        WEEKLY_CALLS.forEach(function (call) {
+          const key = dateStr + "|" + call.title;
+          if (existing.has(key)) return;
+          window.BTD_EVENTS.push({
+            date: dateStr,
+            time: call.time,
+            title: call.title,
+            description: call.description
+          });
         });
       }
     })();
