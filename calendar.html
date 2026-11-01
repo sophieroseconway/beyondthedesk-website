@@ -66,7 +66,8 @@
 
         <aside>
           <h3 style="font-size:1.75rem;margin-bottom:1rem;">What's on the calendar?</h3>
-          <p><strong>Opportunity Calls</strong> — weekly live calls (every Wednesday at 20:00 GMT) where we walk through the business opportunity, answer questions, and introduce guests who've built their own.</p>
+          <p><strong>Opportunity Calls</strong> — live calls where we walk through the business opportunity, answer questions, and introduce guests who've built their own.</p>
+          <p><strong>Level Up Tuesdays</strong> — motivational business-building trainings, often featuring guest speakers, to help you grow your business and keep your momentum going.</p>
           <p><strong>New Starter Welcome Calls</strong> — an onboarding session for anyone new to the community to drop in and ask questions. Aimed to help you get to grips with your resources and kickstart your business!</p>
           <p><strong>Trainings</strong> — topic-specific sessions (travel trends, social media, mindset, etc.) run by community leaders and guest trainers.</p>
           <p><strong>Co-working Sessions</strong> — casual focused-work hangouts where we show up together, crack on with our to-do lists, and keep each other accountable.</p>
@@ -102,13 +103,13 @@
   </footer>
 
   <!-- Define one-off events here. Dates are YYYY-MM-DD in local time.
-       Weekly Wednesday Opportunity Calls (20:00 GMT) and New Starter Welcome
-       Calls (20:30 GMT) are auto-generated below — no need to add them manually. -->
+       Weekly Wednesday New Starter Welcome Calls (20:30 GMT) are
+       auto-generated below (Opportunity Calls are currently paused) — no need to add them manually. -->
   <script>
     window.BTD_EVENTS = [
-      { date: "2026-04-21", time: "7:30 PM", title: "PlanNet Marketing — Brentwood", location: "Brentwood", description: "19:30 registration · 19:45 presentation · 20:30 training" },
-      { date: "2026-05-05", time: "8:00 PM GMT", title: "Opportunity Call", description: "Weekly opportunity overview + Q&A." },
-      { date: "2026-05-06", time: "7:30 PM", title: "PlanNet Marketing — Leeds", location: "Leeds", description: "19:30 registration · 19:45 presentation · 20:30 training" }
+      { date: "2026-11-02", title: "The Gift of Travel", description: "Christmas inspiration and booking ideas training." },
+      { date: "2026-11-03", title: "Level Up Tuesday", description: "Motivational business-building training with guest speakers." },
+      { date: "2026-11-25", title: "Passport to Possibility", description: "Hear from the youngest person to visit every country." }
     ];
 
     // Auto-generate the two weekly Wednesday calls so the calendar always
@@ -129,11 +130,7 @@
 
       // Each entry below is a weekly Wednesday call. Add more here if needed.
       const WEEKLY_CALLS = [
-        {
-          title: "Opportunity Call",
-          time: "8:00 PM GMT",
-          description: "Weekly opportunity overview + Q&A."
-        },
+        // Opportunity Calls are paused — add them back here when they restart.
         {
           title: "New Starter Welcome Call",
           time: "8:30 PM GMT",
